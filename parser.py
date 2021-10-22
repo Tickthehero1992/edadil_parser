@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 import os
 import datetime
 
+
 name = ['alcohol', 'food', 'home-stuff', 'beer-cider', 'cosmetics-hygiene',
         'for-kids', 'pet-supplies', 'mkt-electronic-1077', 'mkt-clothes-shoes-and-accessories-1790']
 rus_name = ["алкоголь", "еда", "для дома", "пиво", "косметика",
@@ -13,7 +14,6 @@ shop = ['5ka', 'krasnoeibeloe', 'dixy', 'magnit-univer', 'perekrestok']
 rus_shop = ["пятерочка", "красное и белое", "дикси", "перекресток"]
 
 url_site = "https://edadeal.ru/moskva/retailers/{}?page={}&segment={}"
-
 
 
 def from_rus_to_eng(list_names, list_rus_names, rus_name):
@@ -35,6 +35,7 @@ class Parser:
 
     def exists_path(self):
         if os.path.exists(self.file_path):
+            self.fl = None
             return 0
         else:
             self.fl = open(self.file_path, mode='w', encoding='utf-8')
@@ -79,8 +80,8 @@ class Parser:
             if (self.get_page(page) == 0):
                 break
             page = page+1
-
-        self.fl.close()
+        if self.fl is not None:
+            self.fl.close()
         return self.file_path
 
 
