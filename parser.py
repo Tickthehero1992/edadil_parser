@@ -38,6 +38,7 @@ class Parser:
         browser.get(url)
         browser.implicitly_wait(4)
         elems = browser.find_elements(By.XPATH, '//*[contains(text(),"Да. Мне есть 18")]')
+
         for elem in elems:
             print(elem)
             while(1):
@@ -47,6 +48,11 @@ class Parser:
              except:
                 pass
             break
+
+        products_info = browser.find_elements(By.CLASS_NAME, 'b-offer__description')
+        products_price = browser.find_elements(By.CLASS_NAME, 'b-offer__price-new')
+        for i in range(len(products_info)):
+            print(products_info[i].text + ' '+ products_price[i].text)
 
 
         # elems = browser.find_element(By.XPATH, '//*[contains(@class,"b-offer__product-info")]')
