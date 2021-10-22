@@ -31,19 +31,21 @@ class Parser:
         except:
             pass
         self.file_path = os.path.join('lists',self.shop+'_'+self.name+'_'+ str(datetime.datetime.now().day)+'.txt')
-        self.fl = open(self.file_path, mode='w', encoding='utf-8')
+
 
     def exists_path(self):
         if os.path.exists(self.file_path):
             return 0
         else:
+            self.fl = open(self.file_path, mode='w', encoding='utf-8')
             return 1
 
     def get_page(self, page_number):
-        if self.exists_path() == 0:
+        if self.exists_path() == 0 and page_number==1:
             return 0
         url = self.url.format(self.shop, str(page_number), self.name)
         opts = Options()
+        opts.add_argument('--headless')
         browser = Firefox(options=opts)
         browser.get(url)
         browser.implicitly_wait(4)
@@ -83,5 +85,5 @@ class Parser:
 
 
 # ps = Parser(shop=from_rus_to_eng(list_names=shop, list_rus_names=rus_shop, rus_name='Красное и белое'))
-ps = Parser()
+ps = Parser(shop=shop[4])
 ps.get_all_pages()
