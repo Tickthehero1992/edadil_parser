@@ -11,7 +11,7 @@ rus_name = ["алкоголь", "еда", "для дома", "пиво", "кос
             "для детей", "зоотовары", "электроника", "одежда"]
 
 shop = ['5ka', 'krasnoeibeloe', 'dixy', 'magnit-univer', 'perekrestok']
-rus_shop = ["пятерочка", "красное и белое", "дикси", "перекресток"]
+rus_shop = ["пятерочка", "красное и белое", "дикси", "магнит", "перекресток"]
 
 url_site = "https://edadeal.ru/moskva/retailers/{}?page={}&segment={}"
 
